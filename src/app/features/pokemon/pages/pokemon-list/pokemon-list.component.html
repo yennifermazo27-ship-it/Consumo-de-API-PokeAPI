@@ -1,0 +1,18 @@
+<div class="contenedor">
+    <h1>Pokémones</h1>
+
+    <p *ngIf="cargando">Cargando pokémon...</p>
+
+    <p *ngIf="error">{{ error }}</p>
+
+    <div class="lista" *ngIf="!cargando && !error">
+        <app-pokemon-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon">
+        </app-pokemon-card>
+    </div>
+
+    <div class="paginacion" *ngIf="!cargando && !error">
+        <button (click)="anterior()" [disabled]="offset === 0">⬅ Anterior</button>
+        <span>Página {{ pagina }}</span>
+        <button (click)="siguiente()">Siguiente ➡</button>
+    </div>
+</div>

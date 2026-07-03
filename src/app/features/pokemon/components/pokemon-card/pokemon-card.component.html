@@ -1,0 +1,9 @@
+<div class="tarjeta">
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+    <h2>{{ pokemon.name }}</h2>
+    <p>ID: {{ pokemon.id }}</p>
+    <p>Altura: {{ pokemon.height }}</p>
+    <p>Peso: {{ pokemon.weight }}</p>
+    <p>Experiencia: {{ pokemon.base_experience }}</p>
+    <span class="tipo">{{ pokemon.types[0].type.name }}</span>
+</div>
