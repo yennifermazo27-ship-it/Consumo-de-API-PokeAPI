@@ -1,4 +1,4 @@
-# Pokédex App 
+# Pokémones App 
 
 Aplicación Angular v19 que consume la PokéAPI y muestra un listado de Pokémon con su información de detalle.
 
