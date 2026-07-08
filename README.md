@@ -1,10 +1,10 @@
-# Pokémones App 
+# PokémonesApi
 
 Aplicación Angular v19 que consume la PokéAPI y muestra un listado de Pokémon con su información de detalle.
 
 ## Tecnologías usadas
 - Angular v19
-- RxJS (switchMap, forkJoin, map, catchError)
+- RxJS (switchMap, forkJoin, map, catchError, debounceTime)
 - HttpClient
 - TypeScript
 - PokéAPI
@@ -35,6 +35,8 @@ http://localhost:4200
 - Listado de 20 Pokémon por página
 - Tarjetas con imagen, nombre, ID, altura, peso, experiencia y tipo
 - Paginación con botones anterior y siguiente
+- Búsqueda de Pokémon por nombre con debounce
+- Detalle de tipo al hacer clic en el tipo de un Pokémon
 - Estado de carga mientras se obtienen los datos
 - Manejo de errores visible en pantalla
 

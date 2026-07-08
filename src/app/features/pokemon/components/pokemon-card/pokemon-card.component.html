@@ -5,5 +5,7 @@
     <p>Altura: {{ pokemon.height }}</p>
     <p>Peso: {{ pokemon.weight }}</p>
     <p>Experiencia: {{ pokemon.base_experience }}</p>
-    <span class="tipo">{{ pokemon.types[0].type.name }}</span>
+    <span class="tipo" *ngFor="let t of pokemon.types" (click)="verTipo(t.type.name)">
+        {{ t.type.name }}
+    </span>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Pokemon } from '../../model/pokemon.model';
 
 @Component({
@@ -9,4 +9,9 @@ import { Pokemon } from '../../model/pokemon.model';
 })
 export class PokemonCardComponent {
   @Input() pokemon!: Pokemon;
+  @Output() tipoClick = new EventEmitter<string>();
+
+  verTipo(tipo: string): void {
+    this.tipoClick.emit(tipo);
+  }
 }

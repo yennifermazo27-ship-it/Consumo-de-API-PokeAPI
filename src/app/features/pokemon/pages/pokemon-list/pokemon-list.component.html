@@ -1,18 +1,46 @@
 <div class="contenedor">
-    <h1>Pokémones</h1>
+  <h1>Pokemones</h1>
 
-    <p *ngIf="cargando">Cargando pokémon...</p>
+  <div class="busqueda">
+    <input type="text" [formControl]="busqueda" placeholder="Buscar pokémon...">
+  </div>
 
-    <p *ngIf="error">{{ error }}</p>
+  <p *ngIf="cargando">Cargando pokémon...</p>
 
-    <div class="lista" *ngIf="!cargando && !error">
-        <app-pokemon-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon">
-        </app-pokemon-card>
-    </div>
+  <p *ngIf="error">{{ error }}</p>
 
-    <div class="paginacion" *ngIf="!cargando && !error">
-        <button (click)="anterior()" [disabled]="offset === 0">⬅ Anterior</button>
-        <span>Página {{ pagina }}</span>
-        <button (click)="siguiente()">Siguiente ➡</button>
-    </div>
+  <div class="lista" *ngIf="!cargando && !error">
+    <app-pokemon-card
+      *ngFor="let pokemon of pokemonsFiltrados"
+      [pokemon]="pokemon"
+      (tipoClick)="verDetalleTipo($event)">
+    </app-pokemon-card>
+  </div>
+
+  <p *ngIf="!cargando && pokemonsFiltrados.length === 0">
+    No se encontró ningún pokémon
+  </p>
+
+  <div class="paginacion" *ngIf="!cargando && !error && !busqueda.value">
+    <button (click)="anterior()" [disabled]="offset === 0">⬅ Anterior</button>
+    <span>Página {{ pagina }}</span>
+    <button (click)="siguiente()">Siguiente ➡</button>
+  </div>
+
+  <div class="tipo-detalle" *ngIf="tipoDetalle">
+    <h2>Tipo: {{ tipoSeleccionado }}</h2>
+    <p>Total pokémon de este tipo: {{ tipoDetalle.pokemon.length }}</p>
+    <p>Doble daño a:
+      <span *ngFor="let t of tipoDetalle.damage_relations.double_damage_to">
+        {{ t.name }}
+      </span>
+    </p>
+    <p>Débil contra:
+      <span *ngFor="let t of tipoDetalle.damage_relations.double_damage_from">
+        {{ t.name }}
+      </span>
+    </p>
+    <button (click)="cerrarDetalle()">Cerrar ✖</button>
+  </div>
+
 </div>
